@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+:root {
+  /* Blue Palette */
+  --blue-50:  #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-900: #1e3a5f;
+
+  /* Theme */
+  --bg:         #f8faff;
+  --bg-alt:     #eef3ff;
+  --surface:    #ffffff;
+  --border:     #dbeafe;
+  --text:       #0f1c35;
+  --text-muted: #4b6280;
+  --text-light: #94a3b8;
+
+  --primary:       #2563eb;
+  --primary-light: #60a5fa;
+  --primary-dark:  #1d4ed8;
+  --primary-alpha: rgba(37, 99, 235, 0.1);
+
+  --gradient: linear-gradient(135deg, #2563eb, #60a5fa);
+  --gradient-hero: linear-gradient(160deg, #eff6ff 0%, #dbeafe 100%);
+
+  /* Misc */
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --nav-h: 68px;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  --shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
+  --shadow-lg: 0 12px 40px rgba(37, 99, 235, 0.15);
+  --transition: all 0.25s ease;
+  --container: 1100px;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-h);
+  font-family: var(--font);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* Accent Gradient Text */
+.accent {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+/* Hero Person Image Mask & Glow */
+.hero-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 320px;
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.20) 0%, rgba(96, 165, 250, 0.10) 45%, transparent 70%);
+  filter: blur(36px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-person-img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 390px;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  display: block;
+  -webkit-mask-image: linear-gradient(to bottom, black 86%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 86%, transparent 100%);
+  filter: drop-shadow(0 16px 28px rgba(30, 58, 95, 0.18)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.hero-person-img:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+/* Bob animation */
+@keyframes bob {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(7px);
+  }
+}
+
+.animate-bob {
+  animation: bob 2s ease-in-out infinite;
+}
+
+/* Blinking cursor */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 0.8s step-end infinite;
+}

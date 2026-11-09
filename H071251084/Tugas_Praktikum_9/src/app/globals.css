@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+/* Semua tampilan memakai class Tailwind langsung di JSX,
+   jadi file CSS ini cukup satu baris import di atas. */
